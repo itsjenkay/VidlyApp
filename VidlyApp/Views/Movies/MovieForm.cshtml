@@ -8,30 +8,41 @@
 
 @using (Html.BeginForm("AddMovie", "Movies"))
 {
+    @Html.ValidationSummary(true,"Please fill in the spaces below")
     <div class=" form-group">
         @Html.LabelFor(c => c.Movie.Name)
         @Html.TextBoxFor(c => c.Movie.Name, new { @class = "form-control" })
+        @Html.ValidationMessageFor(c=>c.Movie.Name)
     </div>
 
     <div class="form-group">
         @Html.LabelFor(c => c.Movie.DateAdded)
         @Html.TextBoxFor(c => c.Movie.DateAdded, new { @class = "form-control" })
+        @Html.ValidationMessageFor(c=>c.Movie.DateAdded)
     </div>
     <div class="form-group">
         @Html.LabelFor(c => c.Movie.ReleasedDate)
         @Html.TextBoxFor(c => c.Movie.ReleasedDate, new { @class = "form-control" })
+        @Html.ValidationMessageFor(c=>c.Movie.ReleasedDate)
     </div>
 
     <div class="form-group">
         @Html.LabelFor(c => c.Movie.GenreId)
         @Html.DropDownListFor(c => c.Movie.GenreId, new SelectList(Model.Genres, "Id", "Name"), new { @class = "form-control" })
+        @Html.ValidationMessageFor(c=>c.Movie.GenreId)
     </div>
 
     <div class="form-group">
         @Html.LabelFor(c => c.Movie.NumbersInStock)
         @Html.TextBoxFor(c => c.Movie.NumbersInStock, new { @class = "form-control" })
+        @Html.ValidationMessageFor(c=>c.Movie.NumbersInStock)
     </div>
+    // for clearing and making the field empty , without any values
+    @Html.Hidden("Movie.Id",(Model.Movie!=null)? Model.Movie.Id:0)
+    // for comparing and checking if the values corresponds well
     @Html.HiddenFor(m => m.Movie.Id)
+    //for validation purpose and to give a user a special token so as for another user no to resubmit the form
+    @Html.AntiForgeryToken()
     <div>
         <button type="submit" class="btn btn-primary">
             Update

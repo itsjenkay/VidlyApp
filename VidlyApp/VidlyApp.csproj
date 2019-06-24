@@ -283,6 +283,10 @@
     <Compile Include="Migrations\201906241442141_ALittleSmallChange1.Designer.cs">
       <DependentUpon>201906241442141_ALittleSmallChange1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201906241524014_ALittleSmallChange2.cs" />
+    <Compile Include="Migrations\201906241524014_ALittleSmallChange2.Designer.cs">
+      <DependentUpon>201906241524014_ALittleSmallChange2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\Genre.cs" />
@@ -453,6 +457,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201906241442141_ALittleSmallChange1.resx">
       <DependentUpon>201906241442141_ALittleSmallChange1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906241524014_ALittleSmallChange2.resx">
+      <DependentUpon>201906241524014_ALittleSmallChange2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

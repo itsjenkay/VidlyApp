@@ -14,8 +14,7 @@ namespace VidlyApp.Models
         [Required]
         [MaxLength(255)]
         public string Name { get; set; }
-
-       [Required]
+             
         public Genre Genre { get; set; }
 
         [Display(Name = "Genre")]
@@ -28,6 +27,7 @@ namespace VidlyApp.Models
         public DateTime ReleasedDate { get; set; }
 
         [Display(Name = "Number In Stock")]
+        [Range(1,20)]
         public byte NumbersInStock { get; set; }
 
    
