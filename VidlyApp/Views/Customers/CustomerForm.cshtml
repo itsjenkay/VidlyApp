@@ -1,0 +1,50 @@
+﻿@model VidlyApp.ViewModels.CustomerFormViewModel
+
+@{
+    ViewBag.Title = "New";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Edit Customer</h2> 
+
+@using (Html.BeginForm("Save", "Customers"))
+{
+    
+    @Html.ValidationSummary(true, "Please fix the following")
+    <div class="form-group">
+        @Html.LabelFor(c => c.Customer.Name)
+        @Html.TextBoxFor(c => c.Customer.Name, new { @class = "form-control" })
+        @Html.ValidationMessageFor(c => c.Customer.Name)
+
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(c => c.Customer.MembershipType)
+        @Html.DropDownListFor(c => c.Customer.MembershipTypeId, new SelectList(Model.MembershipTypes, "Id", "Name"), "Select Membership type", new { @class = "form-control" })
+        @Html.ValidationMessageFor(c => c.Customer.MembershipTypeId)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(c => c.Customer.Birthdate)
+        @Html.TextBoxFor(c => c.Customer.Birthdate, "{0:d MMM yyyy }", new { @class = "form-control" })
+        @Html.ValidationMessageFor(c => c.Customer.Birthdate)
+    </div>
+
+    <div class="checkbox">
+        <label>
+            @Html.CheckBoxFor(c => c.Customer.IsSubscribedToNewsLetter) Subscribe to newsletter?
+        </label>
+    </div>
+
+
+    @Html.HiddenFor(m => m.Customer.Id)
+    @Html.AntiForgeryToken()
+    <div>
+        <button class="btn btn-success" type="submit">
+            Save
+        </button>
+    </div>
+
+}
+@section scripts
+    {
+      @Scripts.Render("~/bundles/jqueryval")
+    }
+
