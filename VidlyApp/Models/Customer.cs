@@ -22,7 +22,7 @@ namespace VidlyApp.Models
 
         public bool IsSubscribedToNewsLetter { get; set; }
 
-        [Required]
+       
         public MembershipType MembershipType { get; set; }
         
         public byte MembershipTypeId { get; set; }
