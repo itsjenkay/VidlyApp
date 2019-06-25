@@ -49,7 +49,7 @@ namespace VidlyApp.Controllers.Api
 
                 return customer;
             }
-            catch (Exception ex)
+            catch (Exception )
             {
                 return null;
             }
