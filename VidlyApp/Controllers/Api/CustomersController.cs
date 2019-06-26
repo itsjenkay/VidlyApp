@@ -37,7 +37,7 @@ namespace VidlyApp.Controllers.Api
 
         //POST /api/customers
        
-        [HttpPost]
+        [HttpPost]  
         public Customer CreateCustomer(Customer customer)
         {
             try
