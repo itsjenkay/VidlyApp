@@ -5,15 +5,21 @@ using System.Linq;
 using System.Web;
 using VidlyApp.Dtos;
 using VidlyApp.Models;
+
+
 namespace VidlyApp.App_Start
 {
     public class MappingProfile:Profile
     {
         public MappingProfile()
         {
-            //maping from the source to the target
+            //maping from the source to the target for customers
             Mapper.CreateMap<Customer, CustomersDto>();
             Mapper.CreateMap<CustomersDto, Customer>();
+
+            //mapping from the source to target for movies
+            Mapper.CreateMap<Movie, MoviesDto>();
+            Mapper.CreateMap<MoviesDto, Movie>();
         }
     }
 }

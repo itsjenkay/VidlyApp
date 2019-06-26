@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using VidlyApp.Models;
 using System.ComponentModel.DataAnnotations;
+using VidlyApp.Models;
 
 namespace VidlyApp.Dtos
 {
-    public class CustomersDto
+    public class MoviesDto
     {
         public int Id { get; set; }
 
@@ -15,12 +15,14 @@ namespace VidlyApp.Dtos
         [MaxLength(255)]
         public string Name { get; set; }
 
-      //[Min18YearsIfAMember]
-        public DateTime? Birthdate { get; set; }
+        public byte GenreId { get; set; }
 
-        public bool IsSubscribedToNewsLetter { get; set; }
+        [Required]
+        public DateTime DateAdded { get; set; }
+
+        [Required]
+        public DateTime ReleasedDate { get; set; }
         
-        public byte MembershipTypeId { get; set; }
-
+        public byte NumbersInStock { get; set; }
     }
 }

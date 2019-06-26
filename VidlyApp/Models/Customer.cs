@@ -16,8 +16,7 @@ namespace VidlyApp.Models
         [MaxLength(255)] 
         public string Name { get; set; }
 
-        [Display(Name ="Date of birth")]
-
+          [Display(Name ="Date of birth")]
         //[Min18YearsIfAMember]
         public DateTime? Birthdate { get; set; }
 

@@ -31,6 +31,7 @@ namespace VidlyApp.Controllers.Api
         public IHttpActionResult GetCustomer(int id)
         {
             var customer = _context.Customers.SingleOrDefault(c => c.Id == id);
+
             if (customer == null)
                 return NotFound();
             else
@@ -77,6 +78,7 @@ namespace VidlyApp.Controllers.Api
             Mapper.Map(customerDto, customerInDB);
       
             _context.SaveChanges();
+           
         }
 
         [HttpDelete]
@@ -85,6 +87,7 @@ namespace VidlyApp.Controllers.Api
             var customerInDB = _context.Customers.SingleOrDefault(c => c.Id == id);
             if (customerInDB == null)
                 throw new HttpResponseException(HttpStatusCode.NotFound);
+
             _context.Customers.Remove(customerInDB);
             _context.SaveChanges();
         }
