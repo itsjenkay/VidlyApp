@@ -54,20 +54,31 @@ namespace VidlyApp.Controllers.Api
 
         //PUT Api/movies/1
         [HttpPut]
-        public void UpdateMovie(int id,MoviesDto moviesDto)
+        public IHttpActionResult UpdateMovie(int id,MoviesDto moviesDto)
         {
-            if (!ModelState.IsValid)
+            try
             {
-                throw new HttpResponseException(HttpStatusCode.BadRequest);
-            }
-            var moviesInDb = _context.movies.SingleOrDefault(c => c.Id == id);
-            if (moviesInDb == null)
-                throw new HttpResponseException(HttpStatusCode.NotFound);
-            Mapper.Map(moviesDto, moviesInDb);
-            _context.SaveChanges();
-   
-        }
 
+                if (!ModelState.IsValid)
+                {
+                    throw new HttpResponseException(HttpStatusCode.BadRequest);
+                }
+                var moviesInDb = _context.movies.SingleOrDefault(c => c.Id == id);
+                if (moviesInDb == null)
+                    throw new HttpResponseException(HttpStatusCode.BadRequest);
+                Mapper.Map(moviesDto, moviesInDb);
+                _context.SaveChanges();
+
+                return Ok(Mapper.Map<Movie, MoviesDto>(moviesInDb));
+                
+            }
+            catch (Exception)
+            {
+
+                throw null;
+            }
+        }
+       
         //DELETE Api/movies/1
         [HttpDelete]
         public void DeleteCustomer(int id)
